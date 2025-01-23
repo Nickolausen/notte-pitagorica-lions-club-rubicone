@@ -74,23 +74,25 @@ class Ciottoli(Scene):
         line = Line().rotate(45 * DEGREES).next_to(reference, UL).shift(DR * .875).set_color(PURE_RED)
         for obj in first_row:
             if isinstance(obj, Tex) or isinstance(obj, Integer):
-                self.play(Write(obj), run_time=.75)
+                self.play(Write(obj), run_time=.65)
             else:
-                self.play(Create(obj), run_time=3)
+                self.play(Create(obj), run_time=1.5)
             self.wait(.5)
 
         for obj in second_row:
-            if isinstance(obj, Tex) or isinstance(obj, Integer):
-                self.play(Write(obj), run_time=.75)
+            if isinstance(obj, Integer):
+                self.play(Write(obj), run_time=.65)
+            elif isinstance(obj, Tex):
+                self.play(Write(obj), run_time=.8)
             else:
-                self.play(Create(obj), run_time=3)
+                self.play(Create(obj), run_time=1.5)
             self.wait(.5)
 
-        self.play(Create(line), run_time=2)
+        self.play(Create(line), run_time=1)
         self.play(n_quadrati_tutti[2][0].animate.set_color(GREEN), 
             n_quadrati_tutti[2][1].animate.set_color(GREEN), 
             n_quadrati_tutti[2][3].animate.set_color(GREEN))
-        self.wait(.75)
+        self.wait(.65)
         self.play(
             n_quadrati_tutti[2][2].animate.set_color(TEAL), 
             n_quadrati_tutti[2][4].animate.set_color(TEAL), 
@@ -98,7 +100,7 @@ class Ciottoli(Scene):
             n_quadrati_tutti[2][6].animate.set_color(TEAL),
             n_quadrati_tutti[2][7].animate.set_color(TEAL),
             n_quadrati_tutti[2][8].animate.set_color(TEAL))
-        self.wait(.75)
+        self.wait(.65)
         self.play(Write(formula), run_time=2)
         self.play(formula.animate.set_color_by_tex(r"\frac{n(n+1)}{2}", GREEN))
         self.play(formula.animate.set_color_by_tex(r"\frac{(n+2)(n+1)}{2}", TEAL))
